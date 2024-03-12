@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM arm64v8/python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y wget curl jq unzip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Fetch the latest k6 release for Linux x86_64 and unzip it
-RUN wget "https://github.com/grafana/k6/releases/download/v0.49.0/k6-v0.49.0-linux-amd64.tar.gz" -O k6.tar.gz && \
+RUN wget "https://github.com/grafana/k6/releases/download/v0.49.0/k6-v0.49.0-linux-arm64.tar.gz" -O k6.tar.gz && \
     tar -xzf k6.tar.gz -C /usr/local/bin/ --strip-components=1 && \
     rm k6.tar.gz
 
